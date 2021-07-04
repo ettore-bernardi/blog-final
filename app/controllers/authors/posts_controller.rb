@@ -6,7 +6,7 @@ module Authors
     def index
       @posts = current_author.posts
     end
-  
+
     # GET /posts/new
     def new
       @post = current_author.posts.build
@@ -24,7 +24,7 @@ module Authors
       if @post.save
         redirect_to edit_post_path(@post)
       else
-        render :new
+        broadcast_errors @post, post_params
       end
     end
   
@@ -33,20 +33,20 @@ module Authors
       if @post.update(post_params)
         redirect_to edit_post_path(@post)
       else
-        render :edit
+        broadcast_errors @post, post_params
       end
     end
   
     # DELETE /posts/1
     def destroy
       @post.destroy
-      redirect_to posts_url, notice: 'Post was successfully destroyed.'
+      redirect_to posts_url
     end
   
     private
       # Use callbacks to share common setup or constraints between actions.
       def set_post
-        @post = current_author.posts.find(params[:id])
+        @post = current_author.posts.friendly.find(params[:id])
       end
   
       # Only allow a trusted parameter "white list" through.

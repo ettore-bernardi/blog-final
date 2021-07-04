@@ -28,6 +28,7 @@ gem 'turbolinks', '~> 5'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
 gem 'devise'
+gem 'friendly_id', '~> 5.4.0'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -56,3 +57,5 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem "stimulus_reflex", "~> 3.4"
+
+gem "optimism", "~> 0.4.2"
