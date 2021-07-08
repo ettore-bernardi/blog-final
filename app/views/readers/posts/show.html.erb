@@ -11,4 +11,8 @@
                 <% end %>
             <% end %>
     </div>
+     <div class="card-footer p-0 ps-2">
+                Published <%= time_ago_in_words(@post.published_at) %> ago | Author: <%= @post.author.username %>
+        </div>
+    </div>
 </div>

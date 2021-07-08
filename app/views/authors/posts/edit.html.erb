@@ -48,7 +48,7 @@
         <div class="card mb-5">
             <div class="card-header text-end">
                 <% if @post.published? %>
-                    Published <%= time_ago_in_words(@post.published_at) %> ago
+                    Published <%= time_ago_in_words(@post.published_at) %> ago | by <%= @post.author.username %>
                 <% else %>
                     Unpublished
                 <% end %>
