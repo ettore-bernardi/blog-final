@@ -16,6 +16,6 @@
 <h4>In your browser</h4>
 <ol>
     <li>Go to <code>http://localhost:3000/</code> there you will see the main posts page, this is the principal readers page</li>
-    <li>Now if you go to <code>http://localhost:3000/</code> login using the email <code>author@blog.com</code> and password <code>123321</code></li>
+    <li>Now you can make login using the email <code>author@blog.com</code> and password <code>123321</code> or create a new user</li>
     <li>after logging in you will see the authors page, here you can create new posts and manage the posts made by the user who is logged</li>
 </ol>
