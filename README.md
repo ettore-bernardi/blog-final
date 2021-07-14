@@ -1,4 +1,4 @@
-<h2>Gettin started</h2>
+<h2>Gettin started on Ubunto</h2>
 <p>First you will need to install Ruby: 2.7.3 and Rails: 6.0.4</p>
 <a href="https://gorails.com/setup/ubuntu/20.04">Installation guide</a>
 
