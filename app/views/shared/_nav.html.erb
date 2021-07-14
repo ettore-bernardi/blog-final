@@ -1,15 +1,24 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark position-absolute top-0 w-100 border-bottom px-5">
-    <div class="container-fluid">
-      <a class="navbar-brand fs-2 fw-bold text-uppercase" href="<%= url_for(root_path) %>">Blog do Totore</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        </ul>
-      <% if author_signed_in? %>
-        <%= link_to "Manage Posts", posts_path, class:'btn btn-light me-2' %>
-      <% end %>
-      </div>
+<div class="container">
+  <nav class="navbar navbar-dark bg-dark border-bottom px-5">
+    <div class="container-fluid px-5">
+      <a class="navbar-brand fs-2 fw-bold text-uppercase" href="<%= url_for(root_path) %>">Ettore's Blog</a>
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0"></ul>
+        <% if author_signed_in? %>
+          <div class="dropdown">
+            <div class="btn dropdown-toggle" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+              <%= image_tag("user_avatar.png", width: 50) %>
+            </div>
+            <ul class="dropdown-menu p-2" aria-labelledby="dropdownMenuButton1">
+              <li class="border-bottom">Signed in as<br> <p class="fw-bold"><%= current_author.username %></p></li>
+              <li><%= link_to "Posts", posts_path, class:'dropdown-item' %></li>
+              <li><%= link_to "Edit Profile", edit_author_registration_path, class:'dropdown-item' %></li>
+              <li><%= link_to 'Log Out', destroy_author_session_path, method: :delete, class:'dropdown-item text-danger'%></li>
+            </ul>
+          </div>
+          <% else %>
+          <%= link_to "Sign Up", new_author_registration_path, class:'btn btn-primary mx-2' %>
+          <%= link_to "Sign In", new_author_session_path, class:'btn btn-secondary' %>
+          <% end %>
     </div>
   </nav>
+</div>
