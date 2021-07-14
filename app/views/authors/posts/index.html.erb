@@ -21,6 +21,7 @@
             <% else %>
               <span class="badge bg-secondary mb-2">Unpublished</span>
             <% end %>
+            <span class="badge bg-danger"> <%= post.category.name %> </span>
             <h5 class="card-title mb-2 text-dark"><%= post.title %></h5>
             <p class="text-secondary"><%= post.description %></p>
           </div>

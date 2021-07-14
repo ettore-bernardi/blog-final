@@ -1,6 +1,12 @@
 <%= link_to "back", root_path, class:'btn btn-dark' %>
 <div class="card post-card mt-3">
-    <div class="header-image" style="background-image: url(<%= url_for(@post.header_image) %>)"></div>
+    <% if @post.header_image.present? %>
+            <div class="header-image" style="background-image: url(<%= url_for(@post.header_image) %>)"></div>
+          <% else %>
+            <div class="header-image">
+              <p class="fs-1 fw-bold text-danger text-center mt-5">POST WITHOUT IMAGE</p>
+            </div>
+          <%end%>
     <div class="card-body d-flex flex-column p-5">
             <h1 class="card-title"><%= @post.title %></h1>
             <% @post.elements.each do |element| %>

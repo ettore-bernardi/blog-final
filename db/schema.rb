@@ -1,18 +1,5 @@
-# This file is auto-generated from the current state of the database. Instead
-# of editing this file, please use the migrations feature of Active Record to
-# incrementally modify your database, and then regenerate this schema definition.
-#
-# This file is the source Rails uses to define your schema when running `rails
-# db:schema:load`. When creating a new database, `rails db:schema:load` tends to
-# be faster and is potentially less error prone than running all of your
-# migrations from scratch. Old migrations may fail to apply correctly if those
-# migrations use external dependencies or application code.
-#
-# It's strongly recommended that you check this file into your version control system.
+ActiveRecord::Schema.define(version: 2021_07_12_214654) do
 
-ActiveRecord::Schema.define(version: 2021_07_07_232528) do
-
-  # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "action_text_rich_texts", force: :cascade do |t|
@@ -60,6 +47,12 @@ ActiveRecord::Schema.define(version: 2021_07_07_232528) do
     t.index ["username"], name: "index_authors_on_username", unique: true
   end
 
+  create_table "categories", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "elements", force: :cascade do |t|
     t.string "element_type"
     t.bigint "post_id", null: false
@@ -89,11 +82,14 @@ ActiveRecord::Schema.define(version: 2021_07_07_232528) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "slug"
+    t.bigint "category_id", null: false
     t.index ["author_id"], name: "index_posts_on_author_id"
+    t.index ["category_id"], name: "index_posts_on_category_id"
     t.index ["slug"], name: "index_posts_on_slug", unique: true
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "elements", "posts"
   add_foreign_key "posts", "authors"
+  add_foreign_key "posts", "categories"
 end

@@ -1,7 +1,9 @@
 class Post < ApplicationRecord
+
   extend FriendlyId
   friendly_id :title, use: [:slugged, :history, :finders]
   belongs_to :author
+  belongs_to :category
   has_many :elements
 
   has_one_attached :header_image
