@@ -31,7 +31,21 @@ ActiveRecord::Schema.define(version: 2021_07_12_214654) do
     t.string "checksum", null: false
     t.datetime "created_at", null: false
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
-  end
+  end    Element.create!(
+    element_type: 'paragraph',
+    post_id: '1',
+    position: '1',
+    created_at: 'Tue, 13 Jul 2021 23:11:35 UTC +00:00',
+)
+
+ActionTextRichText.Create!(
+    name: 'content',
+    body: '<div>Jjust a paragraph</div>',
+    record_type: 'Element',
+    record_id: '1',
+    created_at: 'Tue, 13 Jul 2021 23:11:35 UTC +00:00',
+    updated_at: 'Tue, 13 Jul 2021 23:11:35 UTC +00:00',
+)
 
   create_table "authors", force: :cascade do |t|
     t.string "email", default: "", null: false
